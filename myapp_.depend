@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1711291627 source:d:\myapp_\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1711364840 source:d:\myapp_\randomnum.c
+
+1711374139 source:d:\myapp_\data.c
+
