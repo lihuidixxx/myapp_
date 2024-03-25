@@ -35,30 +35,81 @@ typedef struct LinkList { /* 链表类型 */
    int len;         /* 指示线性链表中数据元素的个数 */
 } LinkList;
 
-Status createhead(LinkList *L)//生成链表头节点
+int main()
 {
-  Link p;
-  p=(Link)malloc(sizeof(LNode));//生成头结点
-  if(p == NULL)return OVERFLOW;//存储分配失败
-  p->next = NULL;
-  L->head = L->tail =p;
-  L->len = 0;
-  return OK;
-}
+	srand(( unsigned int ) time ( NULL ));
+	int randomnum(int max);
+	char randomchar();
+	Status createhead(LinkList *L);
+	Status createpoint(LinkList *L, DataType e);
+	LinkList question;
+	LinkList answer;
+	createhead(&question);
+	createhead(&answer);
+	int r;
+	printf( "请输入-r的大小：\n" );
+	scanf( "%d", &r );
+	int n;
+	printf( "请输入-n的大小：\n" );
+	scanf( "%d", &n );
+	int amount = 0;
+	int r_num1,r_num2;
+	char r_sign;DataType daan;
+	for( amount = 0; amount < n; amount++ )
+	{
+		r_num1 = randomnum(r);
+		r_num2 = randomnum(r);
+		r_sign = randomchar();
 
-Status createpoint(LinkList *L, DataType e)//生成节点
-{
-  Link p,q;
-  p=(Link)malloc(sizeof(LNode)); //生成新结点
-  p->data = e;
-  p->next = NULL;
-  q=L->tail;
-  q->next = p;
-  L->tail = p;
-  L->len++;//长度加一
-}
+		if(r_sign == '-' ){
+			if(r_num1 < r_num2){
+				int temp = r_num1;
+				r_num1 = r_num2;
+				r_num2 = temp;
+			}
+			daan.key = r_num1 - r_num2;
+			daan.fenhao = NULL;
+				daan.yushu = NULL;
+				daan.chuhao = NULL;
+				daan.chushu = NULL;
+		}
+		else if(r_sign == '+')
+		{
+			daan.key = r_num1 + r_num2;
+			daan.fenhao = NULL;
+				daan.yushu = NULL;
+				daan.chuhao = NULL;
+				daan.chushu = NULL;
 
-main()
-{
-   return 0;
+		}
+		else if(r_sign == '*')
+		{
+			daan.key = r_num1 * r_num2;
+			daan.fenhao = NULL;
+				daan.yushu = NULL;
+				daan.chuhao = NULL;
+				daan.chushu = NULL;
+		}
+		else if(r_sign == '/'){
+			daan.key = r_num1 % r_num2;
+			if(daan.key != 0){
+				daan.key = r_num1 / r_num2;
+				daan.fenhao = '\'';
+				daan.yushu = r_num1 % r_num2;
+				daan.chuhao = '/';
+				daan.chushu = r_num2;
+			}
+		}
+		printf( "%d ", r_num1);
+		printf( "%c ", r_sign);
+		printf( "%d = \n", r_num2);
+		DataType first;
+		first.onenum = r_num1;
+		first.fuhao = r_sign;
+		first.twonum = r_num2;
+		createpoint(&question, first);
+		createpoint(&answer, daan);
+	 }
+	writetofile (question);
+	Awritetofile (answer);
 }
