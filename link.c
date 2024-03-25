@@ -1,0 +1,49 @@
+void writetofile (LinkList headpoint)
+{
+	FILE* fp;
+	Link pt;
+	if (( fp = fopen( "question.txt", "w" )) == NULL )
+	{
+		printf("Cannot open the file!\n");
+		exit(0);
+	}
+	pt = headpoint.head->next;
+	int i=1;
+	while( pt != NULL )
+	{
+		fprintf( fp, "%d.", i );
+		fprintf( fp, "%d", pt->data.onenum );
+		fprintf( fp, "%c", pt->data.fuhao );
+		fprintf( fp, "%d=\n", pt->data.twonum );
+		i++;
+		pt = pt->next;
+	}
+	printf("Success!\n");
+	fclose(fp);
+}
+
+void Awritetofile (LinkList headpoint)
+{
+	FILE* fp;
+	Link pt;
+	if (( fp = fopen( "answer.txt", "w" )) == NULL )
+	{
+		printf("Cannot open the file!\n");
+		exit(0);
+	}
+	pt = headpoint.head->next;
+	int i=1;
+	while( pt != NULL )
+	{
+		fprintf( fp, "%d.", i );
+		fprintf( fp, "%d", pt->data.key );
+		fprintf( fp, "%c", pt->data.fenhao );
+		fprintf( fp, "%d", pt->data.yushu);
+		fprintf( fp, "%c", pt->data.chuhao );
+		fprintf( fp, "%d", pt->data.chushu);
+		i++;
+		pt = pt->next;
+	}
+	printf("Success!\n");
+	fclose(fp);
+}
