@@ -2,7 +2,7 @@ void Awritetofile (LinkList headpoint)
 {
 	FILE* fp;
 	Link pt;
-	if (( fp = fopen( "answer.txt", "w" )) == NULL )
+	if (( fp = fopen( "Answers.txt", "w" )) == NULL )
 	{
 		printf("Cannot open the file!\n");
 		exit(0);
@@ -42,7 +42,7 @@ void writetofile (LinkList headpoint)
 {
 	FILE* fp;
 	Link pt;
-	if (( fp = fopen( "question.txt", "w" )) == NULL )
+	if (( fp = fopen( "Exercises.txt", "w" )) == NULL )
 	{
 		printf("Cannot open the file!\n");
 		exit(0);
